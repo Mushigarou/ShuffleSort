@@ -2,6 +2,6 @@
 
 int	main()
 {
-	printf("Libft is working");
+	bubble_sort();
 	return (0);
 }

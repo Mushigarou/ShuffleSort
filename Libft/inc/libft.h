@@ -10,6 +10,9 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <sys/file.h>
+#include "sorting.h"
+#include "get_next_line.h"
+#include "ft_printf.h"
 
 # ifndef NULL_CHAR
 #  define  NULL_CHAR 1
