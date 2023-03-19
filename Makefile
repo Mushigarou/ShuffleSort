@@ -25,7 +25,10 @@ HEADERS := include/push_swap.h
 NAME := push_swap
 
 # Flags used in compilation
-CFLAGS := -Werror -Wextra -Wall
+CFLAGS := -Werror -Wextra -Wall -I$(INCDIR)
+
+# libft static archive
+LIBFT_ARCHIVE = libft/libft.a
 
 # Command used to rm files and obj directory
 RM := /bin/rm -rf
@@ -52,11 +55,11 @@ NC ='\033[0m'
 all : $(NAME)
 
 $(NAME) : libft_ar $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBFT_ARCHIVE)
 
 $(OBJDIR)/%.o : %.c $(HEADERS)
 	 mkdir -p $(dir $@)
-	 $(CC) $(CFLAGS) -c $< -I$(INCDIR) -o $@
+	 $(CC) $(CFLAGS) -c $< -o $@
 
 # Creates static archive 'libft.a'
 libft_ar:

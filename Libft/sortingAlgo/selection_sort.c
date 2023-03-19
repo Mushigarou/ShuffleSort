@@ -1,11 +1,32 @@
 #include "libft.h"
 
-void selection_sort()
+static void	swap_int(int *a, int *b)
 {
-	return;
+	int	tmp;
+
+	tmp = 0;
+	if (a == b)
+		return ;
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }
 
-int main()
+void	selection_sort(int a[], int n)
 {
-	return (0);
+	int	i;
+	int	j;
+	int	min;
+
+	i = -1;
+	while(++i < n - 1)
+	{
+		j = i - 1;
+		min = i;
+		while (++j < n)
+			if (a[min] > a[j])
+				min = j;
+		swap_int(&a[i], &a[min]);
+	}
+	return;
 }
