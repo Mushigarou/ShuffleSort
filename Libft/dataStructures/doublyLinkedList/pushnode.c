@@ -8,4 +8,5 @@ void	push_node(t_node **lst, t_node *new)
 		new->next = *lst;
 	}
 	*lst = new;
+	new->prev = NULL;
 }

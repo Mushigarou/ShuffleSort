@@ -7,8 +7,8 @@ INCDIR := include
 # Finding all .c files in the source directory and its subdirectories
 SRC := mand_src/main.c \
 		mand_src/parsing.c \
-		mand_src/push_swap.c \
 		mand_src/utils/utils.c \
+		mand_src/utils/instructions.c \
 
 # patsubst ('pattern substitution') takes a pattern, a replacement string and a list of names
 # List of object files to be generated
@@ -65,6 +65,9 @@ $(OBJDIR)/%.o : %.c $(HEADERS)
 libft_ar:
 	make -C libft
 
+debug : libft_ar $(NAME) $(OBJ)
+	$(CC) $(CFLAGS) -fsanitize=address -g $(OBJ) $(LIBFT_ARCHIVE)
+	
 #----------------------------------------------------------------------------------------------
 # Deleting object files
 #----------------------------------------------------------------------------------------------
@@ -87,7 +90,7 @@ re : fclean all
 #----------------------------------------------------------------------------------------------
 
 # Words that do not represent files of the project
-.Phony : all clean fclean re
+.Phony : all clean fclean re debug
 
 # Prevents output of these targets from being printed
 .SILENT : bonus $(NAME) clean fclean re libft_ar
