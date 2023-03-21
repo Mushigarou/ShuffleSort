@@ -161,7 +161,7 @@ $(OBJDIR)/%.o : %.c $(HEADERS)
 	@ echo "$(FILES_COMPILED) * 100 / $(TOTAL_FILES)" | bc | tr -d '\n'
 	@ printf "%% \r"${NC}
 	@ mkdir -p $(dir $@)
-	@ $(CC) $(CFLAGS) -c $< -o $@
+	@ $(CC) $(CFLAGS) -I../../include/ -c $< -o $@
 
 x :
 	@echo "$(SRC) \n\n"

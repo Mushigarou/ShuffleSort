@@ -59,7 +59,7 @@ $(NAME) : libft_ar $(OBJ)
 
 $(OBJDIR)/%.o : %.c $(HEADERS)
 	 mkdir -p $(dir $@)
-	 $(CC) $(CFLAGS) -c $< -o $@
+	 $(CC) $(CFLAGS) -I../libft/inc -c $< -o $@
 
 # Creates static archive 'libft.a'
 libft_ar:

@@ -9,6 +9,8 @@ void	*ft_memset(void *b, int c, size_t len)
 	size_t			tmp;
 	unsigned char	cast_c;
 
+	if (!b)
+		return (NULL);
 	cast_c = (unsigned char)(c);
 	tmp = len;
 	i = 0;

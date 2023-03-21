@@ -1,6 +1,6 @@
 #include "libft.h"
 
-t_node	*new_node(void *data)
+t_node	*new_node(int data)
 {
 	t_node	*node;
 
