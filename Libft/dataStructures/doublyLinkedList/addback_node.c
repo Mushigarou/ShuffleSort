@@ -12,4 +12,5 @@ void	addback_node(t_node **lst, t_node *new)
 	last = last_node(*lst);
 	new->prev = last;
 	last->next = new;
+	// new->next = NULL;
 }
