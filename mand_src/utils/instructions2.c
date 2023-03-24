@@ -7,15 +7,14 @@ void	ft_ra(t_data *data)
 
 	if (STK_SIZE_A > 1)
 	{
+		// printf("ra : HEAD_A = %d | stacka_size = %d \n\n", HEAD_A->data, STK_A->stk_size);
 		tmp = HEAD_A;
 		addback_node(&HEAD_A, new_node(HEAD_A->data));
-		// printf("HEAD_A = %d\n\n", HEAD_A->next->data);
 		HEAD_A = HEAD_A->next;
-		HEAD_A->prev = NULL;
-		// BOTM_A = last_node(&HEAD_A);
-		
 		free(tmp);
+		HEAD_A->prev = NULL;
 	}
+	STK_A->botm = last_node(HEAD_A);
 	return ;
 }
 
@@ -28,10 +27,11 @@ void	ft_rb(t_data *data)
 		tmp = HEAD_B;
 		addback_node(&HEAD_B, new_node(HEAD_B->data));
 		HEAD_B = HEAD_B->next;
-		HEAD_B->prev = NULL;
 		free(tmp);
+		HEAD_B->prev = NULL;
 	}
-		return;
+	STK_B->botm = last_node(HEAD_B);
+	return;
 }
 
 // **	ra and rb at the same time
@@ -48,7 +48,7 @@ void	ft_rra(t_data *data)
 	
 	if (STK_SIZE_A > 1)
 	{
-		printf("prev->botm = %d\n\n", STK_A->botm->prev->data);
+		// printf("rra : HEAD_A = %d | stacka_size = %d | BOTM_A = %d \n\n", HEAD_A->next->data, STK_A->stk_size, STK_A->botm->data);
 		tmp = STK_A->botm;
 		push_node(&HEAD_A, new_node(STK_A->botm->data));
 		STK_A->botm = STK_A->botm->prev;
@@ -71,6 +71,8 @@ void	ft_rrb(t_data *data)
 		BOTM_B->next = NULL;
 		free(tmp);
 	}
+	// if (STK_SIZE_B == 0)
+	// 	STK_B->botm = NULL;
 	return ;
 }
 
