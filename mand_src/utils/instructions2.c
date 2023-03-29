@@ -15,7 +15,8 @@ void	ft_ra(t_data *data)
 		HEAD_A->prev = NULL;
 	}
 	STK_A->botm = last_node(HEAD_A);
-	return ;
+	write(1, "ra\n", 3);
+	return;
 }
 
 void	ft_rb(t_data *data)
@@ -31,6 +32,7 @@ void	ft_rb(t_data *data)
 		HEAD_B->prev = NULL;
 	}
 	STK_B->botm = last_node(HEAD_B);
+	write(1, "rb\n", 3);
 	return;
 }
 
@@ -39,6 +41,7 @@ void	ft_rr(t_data *data)
 {
 		ft_ra(data);
 		ft_rb(data);
+		write(1, "rr\n", 3);
 }
 
 // **	Shift down all elements of stack a by 1. The last element becomes the first one.
@@ -55,6 +58,7 @@ void	ft_rra(t_data *data)
 		free(tmp);
 		STK_A->botm->next = NULL;
 	}
+	write(1, "rra\n", 4);
 	return ;
 }
 
@@ -71,8 +75,7 @@ void	ft_rrb(t_data *data)
 		BOTM_B->next = NULL;
 		free(tmp);
 	}
-	// if (STK_SIZE_B == 0)
-	// 	STK_B->botm = NULL;
+	write(1, "rrb\n", 4);
 	return ;
 }
 
@@ -81,5 +84,6 @@ void	ft_rrr(t_data *data)
 {
 	ft_rra(data);
 	ft_rrb(data);
+	write(1, "rrr\n", 4);
 	return ;
 }

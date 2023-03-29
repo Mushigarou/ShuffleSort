@@ -35,6 +35,7 @@ typedef struct s_list
 typedef struct s_node
 {
 	int				idx;
+	int				cur_idx;
 	int				data;
 	struct s_node	*next;
 	struct s_node	*prev;

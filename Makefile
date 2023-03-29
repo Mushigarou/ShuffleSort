@@ -7,7 +7,9 @@ INCDIR := include
 # Finding all .c files in the source directory and its subdirectories
 SRC := mand_src/main.c \
 		mand_src/parsing.c \
+		mand_src/push_swap.c \
 		mand_src/utils/utils.c \
+		mand_src/utils/debbuging.c \
 		mand_src/utils/instructions.c \
 		mand_src/utils/instructions2.c \
 
@@ -56,11 +58,11 @@ NC ='\033[0m'
 all : $(NAME)
 
 $(NAME) : libft_ar $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) $(LIBFT_ARCHIVE)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBFT_ARCHIVE) -o $(NAME)
 
 $(OBJDIR)/%.o : %.c $(HEADERS)
 	 mkdir -p $(dir $@)
-	 $(CC) $(CFLAGS) -I../libft/inc -c $< -o $@
+	 $(CC) $(CFLAGS) -I../libft/inc -I$(HEADERS) -c $< -o $@
 
 # Creates static archive 'libft.a'
 libft_ar:
@@ -81,7 +83,7 @@ clean :
 # Deletes libft.a, and executable
 fclean : clean
 	make -C libft fclean
-	$(RM) $(NAME) a.out
+	$(RM) $(NAME)
 
 # re-compile all .c files
 re : fclean all

@@ -14,3 +14,82 @@ void	free_stacks(t_data *data)
 	free(data->s_b);
 	return ;
 }
+
+void	min_max(t_data *data, t_node *head)
+{
+	t_node *tmp;
+
+	tmp = head;
+	MAX_VAL_A = tmp;
+	MIN_VAL_A = tmp;
+	while (tmp->next)
+	{
+		tmp = tmp->next;
+		if (tmp->data > MAX_VAL_A->data)
+			MAX_VAL_A = tmp;
+		if (tmp->data < MIN_VAL_A->data)
+			MIN_VAL_A = tmp;
+	}
+}
+
+void	index_stack(t_node *head, int stk_size)
+{
+	t_node	*tmp;
+	t_node	*tmp_2;
+	int k = 0;
+	int i = 0;
+	
+	tmp = head;
+	while (i < stk_size)
+	{
+		tmp_2 = head;
+		k = 0;
+		tmp->idx = 0;
+		while (k < stk_size)
+		{
+			if ((tmp->data > tmp_2->data) && (i != k))
+				tmp->idx++;
+			tmp_2 = tmp_2->next;
+			k++;
+		}
+		tmp = tmp->next;
+		i++;
+	}
+	return ;
+}
+
+void	current_index_instack(t_node *head, int n)
+{
+	t_node	*tmp;
+	int		i;
+
+	tmp = head;
+	i = 0;
+	while (i < n)
+	{
+		tmp->cur_idx = 0;
+		tmp->cur_idx = i;
+		i++;
+		tmp = tmp->next;
+	}
+	return ;
+}
+
+bool	if_sorted_stop(t_node *head, int n)
+{
+	t_node	*node;
+	int		i;
+
+	i = n;
+	node = head;
+	while (i--)
+	{
+		if (node->next && (node->data < node->next->data))
+			node = node->next;
+		else
+			break;
+	}
+	if (i == 0)
+		return (1);
+	return (0);
+}
