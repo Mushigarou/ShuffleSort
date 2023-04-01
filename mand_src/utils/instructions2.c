@@ -10,12 +10,17 @@ void	ft_ra(t_data *data)
 		// printf("ra : HEAD_A = %d | stacka_size = %d \n\n", HEAD_A->data, STK_A->stk_size);
 		tmp = HEAD_A;
 		addback_node(&HEAD_A, new_node(HEAD_A->data));
+	
+		STK_A->botm = last_node(HEAD_A);
+		BOTM_A->cur_idx = HEAD_A->cur_idx;
+		BOTM_A->idx = HEAD_A->idx;
+
 		HEAD_A = HEAD_A->next;
 		free(tmp);
 		HEAD_A->prev = NULL;
+		write(1, "ra\n", 3);
 	}
 	STK_A->botm = last_node(HEAD_A);
-	write(1, "ra\n", 3);
 	return;
 }
 
@@ -27,12 +32,15 @@ void	ft_rb(t_data *data)
 	{
 		tmp = HEAD_B;
 		addback_node(&HEAD_B, new_node(HEAD_B->data));
+		BOTM_B = last_node(HEAD_B);
+		BOTM_B->cur_idx = HEAD_B->cur_idx;
+		BOTM_B->idx = HEAD_B->idx;
 		HEAD_B = HEAD_B->next;
 		free(tmp);
 		HEAD_B->prev = NULL;
+		write(1, "rb\n", 3);
 	}
 	STK_B->botm = last_node(HEAD_B);
-	write(1, "rb\n", 3);
 	return;
 }
 
@@ -41,6 +49,7 @@ void	ft_rr(t_data *data)
 {
 		ft_ra(data);
 		ft_rb(data);
+		// same problem here as function ss
 		write(1, "rr\n", 3);
 }
 
@@ -57,8 +66,8 @@ void	ft_rra(t_data *data)
 		STK_A->botm = STK_A->botm->prev;
 		free(tmp);
 		STK_A->botm->next = NULL;
+		write(1, "rra\n", 4);
 	}
-	write(1, "rra\n", 4);
 	return ;
 }
 
@@ -74,8 +83,8 @@ void	ft_rrb(t_data *data)
 		BOTM_B = STK_B->botm->prev;
 		BOTM_B->next = NULL;
 		free(tmp);
+		write(1, "rrb\n", 4);
 	}
-	write(1, "rrb\n", 4);
 	return ;
 }
 
@@ -84,6 +93,7 @@ void	ft_rrr(t_data *data)
 {
 	ft_rra(data);
 	ft_rrb(data);
+	// same problem here as function ss
 	write(1, "rrr\n", 4);
 	return ;
 }

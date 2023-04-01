@@ -22,15 +22,17 @@ int main(int ac, char **av)
 
 	//	** Fill Stack_b for testing instructions
 	// fill_stk_b(&data);
-	// **	Test instructions
-	// test_instuctions(&data, ac);
 	// index_stack(data.s_a->head, data.s_a->stk_size);
 
 	// **	Sorting
+	printf("\n\n****************** Instructions ******************\n");
 	sort_that_shit(&data);
 	// index_stack(data.s_a->head, data.s_a->stk_size);
 	// current_index_instack(data.s_a->head, data.s_a->stk_size);
 
+	// **	Test instructions
+	// test_instuctions(&data, ac);
+	
 	// **	Print content of both stacks
 	print_stacks(data);
 
@@ -38,8 +40,7 @@ int main(int ac, char **av)
 	free_stacks(&data);
 
 	// **	Checks leaks
-	// atexit(lk);
+	atexit(lk);
 	
 	return (0);
 }
-

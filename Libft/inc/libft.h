@@ -14,6 +14,7 @@
 # include <stdbool.h>
 # include "get_next_line.h"
 # include "ft_printf.h"
+# include "sorting.h"
 # include "../../include/push_swap.h"
 
 # ifndef NULL_CHAR

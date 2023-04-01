@@ -19,6 +19,8 @@ void	min_max(t_data *data, t_node *head)
 {
 	t_node *tmp;
 
+	if (!head)
+		return ;
 	tmp = head;
 	MAX_VAL_A = tmp;
 	MIN_VAL_A = tmp;
@@ -35,27 +37,38 @@ void	min_max(t_data *data, t_node *head)
 void	index_stack(t_node *head, int stk_size)
 {
 	t_node	*tmp;
-	t_node	*tmp_2;
-	int k = 0;
-	int i = 0;
-	
+	int	*arr;
+	int	i;
+
+	i = -1;
+	arr = (int *)malloc(stk_size * sizeof(int));
 	tmp = head;
-	while (i < stk_size)
+	while (++i < stk_size)
 	{
-		tmp_2 = head;
-		k = 0;
-		tmp->idx = 0;
-		while (k < stk_size)
+		arr[i] = tmp->data;
+		tmp = tmp->next;
+	}
+	opt_bubble_sort(arr, stk_size);
+	i = -1;
+	int k = 0;
+	tmp = head;
+	while (++i < stk_size)
+	{
+		k = -1;
+		while (++k < stk_size)
 		{
-			if ((tmp->data > tmp_2->data) && (i != k))
-				tmp->idx++;
-			tmp_2 = tmp_2->next;
-			k++;
+			if (tmp->data == arr[k])
+				tmp->idx = k;
 		}
 		tmp = tmp->next;
-		i++;
 	}
-	return ;
+	
+	i = 0;
+	printf("****************** Sorted ******************\n");
+	while(i < stk_size)
+		{printf("%d ", arr[i]);i++;}
+	free(arr);
+	return;
 }
 
 void	current_index_instack(t_node *head, int n)
