@@ -107,9 +107,10 @@ void	current_index_instack(t_node *head, int n);
 // **	Check if stack is sorted or not yet
 bool	if_sorted_stop(t_node *head, int n);
 // **	Sort 100 numbers
-void	sort_a_bunch(t_data *data, int div);
+void	push_to_b(t_data *data, int div, int chunck_len);
+void	push_to_a(t_data *data);
 
-/********************* Debugging ********************/
+	/********************* Debugging ********************/
 	void lk();
 void	fill_stk_b(t_data *data);
 void	test_instuctions(t_data *data, int ac);

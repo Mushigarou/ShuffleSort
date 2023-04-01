@@ -62,11 +62,6 @@ void	index_stack(t_node *head, int stk_size)
 		}
 		tmp = tmp->next;
 	}
-	
-	i = 0;
-	printf("****************** Sorted ******************\n");
-	while(i < stk_size)
-		{printf("%d ", arr[i]);i++;}
 	free(arr);
 	return;
 }
