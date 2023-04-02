@@ -34,14 +34,7 @@ void	index_stack(t_node *head, int stk_size)
 	i = -1;
 	k = 0;
 	tmp = head;
-	while (++i < stk_size)
-	{
-		k = -1;
-		while (++k < stk_size)
-			if (tmp->data == arr[k])
-				tmp->idx = k;
-		tmp = tmp->next;
-	}
+	__assign_idx(head, arr, stk_size);
 	free(arr);
 	return ;
 }

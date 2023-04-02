@@ -6,14 +6,14 @@ void	ft_sa(t_data *data)
 	int	tmp2;
 	int	tmp;
 
-	if (STK_SIZE_A > 1)
+	if (data->s_a->stk_size > 1)
 	{
-		tmp = HEAD_A->data;
-		tmp2 = HEAD_A->idx;
-		HEAD_A->idx = HEAD_A->next->idx;
-		HEAD_A->data = HEAD_A->next->data;
-		HEAD_A->next->data = tmp;
-		HEAD_A->next->idx = tmp2;
+		tmp = data->s_a->head->data;
+		tmp2 = data->s_a->head->idx;
+		data->s_a->head->idx = data->s_a->head->next->idx;
+		data->s_a->head->data = data->s_a->head->next->data;
+		data->s_a->head->next->data = tmp;
+		data->s_a->head->next->idx = tmp2;
 		write(1, "sa\n", 3);
 	}
 	return ;
@@ -25,14 +25,14 @@ void	ft_sb(t_data *data)
 	int	tmp2;
 	int	tmp;
 
-	if (STK_SIZE_B > 1)
+	if (data->s_b->stk_size > 1)
 	{
-		tmp = HEAD_B->data;
-		tmp2 = HEAD_B->idx;
-		HEAD_B->idx = HEAD_B->next->idx;
-		HEAD_B->data = HEAD_B->next->data;
-		HEAD_B->next->data = tmp;
-		HEAD_B->next->idx = tmp2;
+		tmp = data->s_b->head->data;
+		tmp2 = data->s_b->head->idx;
+		data->s_b->head->idx = data->s_b->head->next->idx;
+		data->s_b->head->data = data->s_b->head->next->data;
+		data->s_b->head->next->data = tmp;
+		data->s_b->head->next->idx = tmp2;
 		write(1, "sb\n", 3);
 	}
 	return ;
@@ -43,15 +43,15 @@ void	ft_pa(t_data *data)
 {
 	t_node	*tmp;
 
-	if (STK_SIZE_B > 0)
+	if (data->s_b->stk_size > 0)
 	{
-		tmp = HEAD_B;
-		push_node(&HEAD_A, new_node(HEAD_B->data));
-		HEAD_A->idx = HEAD_B->idx;
-		HEAD_B = HEAD_B->next;
+		tmp = data->s_b->head;
+		push_node(&data->s_a->head, new_node(data->s_b->head->data));
+		data->s_a->head->idx = data->s_b->head->idx;
+		data->s_b->head = data->s_b->head->next;
 		free(tmp);
-		STK_SIZE_A++;
-		STK_SIZE_B--;
+		data->s_a->stk_size++;
+		data->s_b->stk_size--;
 		write(1, "pa\n", 3);
 	}
 	return ;
@@ -62,15 +62,15 @@ void	ft_pb(t_data *data)
 {
 	t_node	*tmp;
 
-	if (STK_SIZE_A > 0)
+	if (data->s_a->stk_size > 0)
 	{
-		tmp = HEAD_A;
-		push_node(&HEAD_B, new_node(HEAD_A->data));
-		HEAD_B->idx = HEAD_A->idx;
-		HEAD_A = HEAD_A->next;
+		tmp = data->s_a->head;
+		push_node(&data->s_b->head, new_node(data->s_a->head->data));
+		data->s_b->head->idx = data->s_a->head->idx;
+		data->s_a->head = data->s_a->head->next;
 		free(tmp);
-		STK_SIZE_A--;
-		STK_SIZE_B++;
+		data->s_a->stk_size--;
+		data->s_b->stk_size++;
 		write(1, "pb\n", 3);
 	}
 	return ;

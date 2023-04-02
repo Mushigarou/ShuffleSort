@@ -90,8 +90,8 @@ SRC_STR   := str/conversion/ft_atoi.c \
 SRC_SORT := sortingAlgo/bubble_sort/bubble_sort.c \
 			sortingAlgo/bubble_sort/opt_bubble_sort.c \
 			sortingAlgo/insertion_sort.c \
-			sortingAlgo/merge_sort.c \
 			sortingAlgo/selection_sort.c \
+			# sortingAlgo/merge_sort.c \
 
 # Combine all sources
 SRC  := $(SRC_DS_SLL) $(SRC_FT_IS) $(SRC_GNL) \
@@ -163,9 +163,6 @@ $(OBJDIR)/%.o : %.c $(HEADERS)
 	@ mkdir -p $(dir $@)
 	@ $(CC) $(CFLAGS) -I../../include/ -c $< -o $@
 
-x :
-	@echo "$(SRC) \n\n"
-	@echo $(OBJ)
 #-------------------------------------------------------------------------------
 # Deletion
 #-------------------------------------------------------------------------------

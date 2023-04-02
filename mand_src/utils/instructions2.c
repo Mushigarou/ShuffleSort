@@ -5,18 +5,18 @@ void	ft_ra(t_data *data)
 {
 	t_node	*tmp;
 
-	if (STK_SIZE_A > 1)
+	if (data->s_a->stk_size > 1)
 	{
-		tmp = HEAD_A;
-		addback_node(&HEAD_A, new_node(HEAD_A->data));
-		STK_A->botm = last_node(HEAD_A);
-		BOTM_A->idx = HEAD_A->idx;
-		HEAD_A = HEAD_A->next;
+		tmp = data->s_a->head;
+		addback_node(&data->s_a->head, new_node(data->s_a->head->data));
+		data->s_a->botm = last_node(data->s_a->head);
+		data->s_a->botm->idx = data->s_a->head->idx;
+		data->s_a->head = data->s_a->head->next;
 		free(tmp);
-		HEAD_A->prev = NULL;
+		data->s_a->head->prev = NULL;
 		write(1, "ra\n", 3);
 	}
-	STK_A->botm = last_node(HEAD_A);
+	data->s_a->botm = last_node(data->s_a->head);
 	return ;
 }
 
@@ -24,18 +24,18 @@ void	ft_rb(t_data *data)
 {
 	t_node	*tmp;
 
-	if (STK_B && STK_SIZE_B > 1)
+	if (data->s_b && data->s_b->stk_size > 1)
 	{
-		tmp = HEAD_B;
-		addback_node(&HEAD_B, new_node(HEAD_B->data));
-		BOTM_B = last_node(HEAD_B);
-		BOTM_B->idx = HEAD_B->idx;
-		HEAD_B = HEAD_B->next;
+		tmp = data->s_b->head;
+		addback_node(&data->s_b->head, new_node(data->s_b->head->data));
+		data->s_b->botm = last_node(data->s_b->head);
+		data->s_b->botm->idx = data->s_b->head->idx;
+		data->s_b->head = data->s_b->head->next;
 		free(tmp);
-		HEAD_B->prev = NULL;
+		data->s_b->head->prev = NULL;
 		write(1, "rb\n", 3);
 	}
-	STK_B->botm = last_node(HEAD_B);
+	data->s_b->botm = last_node(data->s_b->head);
 	return ;
 }
 
@@ -53,14 +53,14 @@ void	ft_rra(t_data *data)
 {
 	t_node	*tmp;
 
-	if (STK_SIZE_A > 1)
+	if (data->s_a->stk_size > 1)
 	{
-		tmp = STK_A->botm;
-		push_node(&HEAD_A, new_node(STK_A->botm->data));
-		HEAD_A->idx = BOTM_A->idx;
-		STK_A->botm = STK_A->botm->prev;
+		tmp = data->s_a->botm;
+		push_node(&data->s_a->head, new_node(data->s_a->botm->data));
+		data->s_a->head->idx = data->s_a->botm->idx;
+		data->s_a->botm = data->s_a->botm->prev;
 		free(tmp);
-		STK_A->botm->next = NULL;
+		data->s_a->botm->next = NULL;
 		write(1, "rra\n", 4);
 	}
 	return ;
@@ -71,14 +71,14 @@ void	ft_rrb(t_data *data)
 {
 	t_node	*tmp;
 
-	if (STK_SIZE_B > 1)
+	if (data->s_b->stk_size > 1)
 	{
-		tmp = BOTM_B;
-		push_node(&HEAD_B, new_node(BOTM_B->data));
-		HEAD_B->idx = BOTM_B->idx;
-		BOTM_B = STK_B->botm->prev;
+		tmp = data->s_b->botm;
+		push_node(&data->s_b->head, new_node(data->s_b->botm->data));
+		data->s_b->head->idx = data->s_b->botm->idx;
+		data->s_b->botm = data->s_b->botm->prev;
 		free(tmp);
-		BOTM_B->next = NULL;
+		data->s_b->botm->next = NULL;
 		write(1, "rrb\n", 4);
 	}
 	return ;

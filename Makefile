@@ -10,6 +10,7 @@ SRC := mand_src/main.c \
 		mand_src/push_swap.c \
 		mand_src/push_swap_2.c \
 		mand_src/utils/utils.c \
+		mand_src/utils/utils2.c \
 		mand_src/utils/debbuging.c \
 		mand_src/utils/instructions.c \
 		mand_src/utils/instructions2.c \

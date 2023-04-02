@@ -24,13 +24,13 @@ void	fill_stack_a(t_data *data, char **av, int ac)
 			i++;
 		while (i--)
 		{
-			push_node(&HEAD_A, new_node(ft_atoi(tmp[i])));
-			STK_SIZE_A++;
+			push_node(&data->s_a->head, new_node(ft_atoi(tmp[i])));
+			data->s_a->stk_size++;
 			free(tmp[i]);
 		}
 		free(tmp);
 	}
-	BOTM_A = last_node(HEAD_A);
+	data->s_a->botm = last_node(data->s_a->head);
 }
 
 void	find_duplicate_nbr(t_data *data)
@@ -39,12 +39,12 @@ void	find_duplicate_nbr(t_data *data)
 	t_node	*tmp2;
 	int		check;
 
-	tmp = HEAD_A;
+	tmp = data->s_a->head;
 	check = 0;
 	while (tmp)
 	{
-		MAX_VAL_A = tmp;
-		MIN_VAL_A = tmp;
+		data->s_a->max = tmp;
+		data->s_a->min = tmp;
 		check = tmp->data;
 		tmp2 = tmp;
 		while (tmp2->next)
@@ -63,8 +63,8 @@ void	if_sorted(t_data *data)
 	t_node	*node;
 	int		i;
 
-	i = STK_SIZE_A;
-	node = HEAD_A;
+	i = data->s_a->stk_size;
+	node = data->s_a->head;
 	while (i--)
 	{
 		if (node->next && (node->data < node->next->data))
@@ -83,8 +83,8 @@ void	parser(t_data *data, int ac, char **av)
 	fill_stack_a(data, av, ac);
 	if_sorted(data);
 	find_duplicate_nbr(data);
-	min_max(data, HEAD_A);
-	index_stack(HEAD_A, STK_SIZE_A);
-	current_index_instack(HEAD_A, STK_SIZE_A);
+	min_max(data, data->s_a->head);
+	index_stack(data->s_a->head, data->s_a->stk_size);
+	current_index_instack(data->s_a->head, data->s_a->stk_size);
 	return ;
 }
