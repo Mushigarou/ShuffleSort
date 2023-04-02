@@ -14,7 +14,7 @@ void	sort_three(t_data *data)
 	t_node	*mid;
 
 	min_max(data, HEAD_A);
-	// index_stack(HEAD_A, STK_SIZE_A);
+	index_stack(HEAD_A, STK_SIZE_A);
 	BOTM_A = last_node(HEAD_A);
 	mid = HEAD_A->next;
 	if (if_sorted_stop(HEAD_A, STK_SIZE_A) == 0 && BOTM_A)
@@ -26,6 +26,8 @@ void	sort_three(t_data *data)
 			if (BOTM_A->idx == 2)
 				return (ft_sa(data), (void)0);
 		}
+		if (if_sorted_stop(HEAD_A, STK_SIZE_A) == 1)
+			return;
 		if (mid->idx == 1)
 		{
 			if (BOTM_A->idx == 0)
@@ -34,8 +36,11 @@ void	sort_three(t_data *data)
 				ft_rra(data);
 			}
 		}
+		if (if_sorted_stop(HEAD_A, STK_SIZE_A) == 1)
+			return ;
 		if (mid->idx == 2)
 		{
+			
 			if (BOTM_A->idx == 0)
 				return (ft_rra(data), (void)0);
 			else
@@ -49,7 +54,6 @@ void	sort_four(t_data *data)
 {
 	min_max(data, HEAD_A);
 	current_index_instack(HEAD_A, STK_SIZE_A);
-	// index_stack(HEAD_A, STK_SIZE_A);
 	if (MIN_VAL_A->cur_idx >= 0 && MIN_VAL_A->cur_idx <= 1)
 	{
 		if (MIN_VAL_A->cur_idx == 1)
@@ -74,7 +78,6 @@ void	sort_five(t_data *data)
 {
 	min_max(data, HEAD_A);
 	current_index_instack(HEAD_A, STK_SIZE_A);
-	// index_stack(HEAD_A, STK_SIZE_A);
 	if (MIN_VAL_A->cur_idx <= 2)
 	{
 		if (MIN_VAL_A->cur_idx == 1)
@@ -100,10 +103,6 @@ void	sort_five(t_data *data)
 	return ;
 }
 
-/*
-- 1 2 0 4 3 (10 instr)
-// ** need a function to re-initialize the following data re_init_data(STK_SIZE, max_min, BOTM, idx_CurrIdx)
-*/
 void	sort_that_shit(t_data *data)
 {
 	if (STK_SIZE_A == 2)
@@ -114,17 +113,14 @@ void	sort_that_shit(t_data *data)
 		sort_four(data);
 	else if (STK_SIZE_A == 5)
 		sort_five(data);
-	else if (STK_SIZE_A <= 100)
+	else if ((STK_SIZE_A > 5) && (STK_SIZE_A <= 200))
 	{
 		push_to_b(data, 5, (STK_SIZE_A / 5));
 		push_to_a(data);
 	}
-	else if (STK_SIZE_A <= 500)
+	else if (STK_SIZE_A > 200)
 	{
-		/*
-		5564 -> div = 8
-		*/
-		push_to_b(data, 10, (STK_SIZE_A / 10));
+		push_to_b(data, 9, (STK_SIZE_A / 9));
 		push_to_a(data);
 	}
 	return ;
