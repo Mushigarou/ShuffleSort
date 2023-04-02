@@ -22,8 +22,9 @@
 # endif // #define NULL_CHAR
 
 // **	Stack_a and Stack_b are declared in push_swap.h
-typedef struct	stack_a t_a;
-typedef struct	stack_b t_b;
+typedef struct stack_a		t_a;
+typedef struct stack_b		t_b;
+typedef unsigned long long	t_ull;
 
 // ** Structure of singly linked list
 typedef struct s_list
@@ -101,7 +102,6 @@ int		printf_putnbr_fd(int n, int fd);
 int		printf_putstr_fd(char *s, int fd);
 int		printf_putunbr_fd(unsigned int n, int fd);
 
-typedef unsigned long long	t_ull;
 // **	Generates a random number
 t_ull	ft_rand(void);
 

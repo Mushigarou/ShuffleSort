@@ -7,7 +7,7 @@ void	addafter_node(t_node *prev_node, t_node *new_node)
 		return ;
 	new_node->prev = prev_node;
 	new_node->next = prev_node->next;
-	prev_node->next = new_node;//
+	prev_node->next = new_node;
 	if (new_node->next)
 		new_node->next->prev = new_node;
 	return ;

@@ -13,6 +13,7 @@ SRC := mand_src/main.c \
 		mand_src/utils/debbuging.c \
 		mand_src/utils/instructions.c \
 		mand_src/utils/instructions2.c \
+		mand_src/utils/instructions3.c \
 
 # patsubst ('pattern substitution') takes a pattern, a replacement string and a list of names
 # List of object files to be generated

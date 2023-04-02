@@ -5,7 +5,7 @@ void	ft_sa(t_data *data)
 {
 	int	tmp2;
 	int	tmp;
-	
+
 	if (STK_SIZE_A > 1)
 	{
 		tmp = HEAD_A->data;
@@ -38,16 +38,6 @@ void	ft_sb(t_data *data)
 	return ;
 }
 
-// **	sa and sb at the same time
-void	ft_ss(t_data *data)
-{
-	ft_sa(data);
-	ft_sb(data);
-	// potentiel problem of printing ss then sb and sa
-	write(1, "ss\n", 3);
-	return ;
-}
-
 // ** Take the first element at the top of b and put it at the top of a.
 void	ft_pa(t_data *data)
 {
@@ -58,7 +48,6 @@ void	ft_pa(t_data *data)
 		tmp = HEAD_B;
 		push_node(&HEAD_A, new_node(HEAD_B->data));
 		HEAD_A->idx = HEAD_B->idx;
-		// HEAD_A->cur_idx = HEAD_B->cur_idx;
 		HEAD_B = HEAD_B->next;
 		free(tmp);
 		STK_SIZE_A++;
@@ -75,16 +64,14 @@ void	ft_pb(t_data *data)
 
 	if (STK_SIZE_A > 0)
 	{
-	// 	// **	Store head node in A
 		tmp = HEAD_A;
 		push_node(&HEAD_B, new_node(HEAD_A->data));
 		HEAD_B->idx = HEAD_A->idx;
-		// HEAD_B->cur_idx = HEAD_A->cur_idx;
 		HEAD_A = HEAD_A->next;
 		free(tmp);
 		STK_SIZE_A--;
 		STK_SIZE_B++;
 		write(1, "pb\n", 3);
 	}
-	return;
+	return ;
 }

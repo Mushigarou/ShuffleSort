@@ -1,18 +1,18 @@
 #include <stdbool.h>
 
-static void swap_int(int *a, int *b)
+static void	swap_int(int *a, int *b)
 {
-	int tmp;
+	int	tmp;
 
 	tmp = *a;
 	*a = *b;
 	*b = tmp;
-	return;
+	return ;
 }
 
 void	bubble_sort(int a[], int n)
 {
-	int k;
+	int	k;
 
 	while (--n)
 	{
@@ -21,5 +21,5 @@ void	bubble_sort(int a[], int n)
 			if (a[k] > a[k + 1])
 				swap_int(&a[k], &a[k + 1]);
 	}
-	return;
+	return ;
 }

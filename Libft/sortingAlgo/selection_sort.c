@@ -19,7 +19,7 @@ void	selection_sort(int a[], int n)
 	int	min;
 
 	i = -1;
-	while(++i < n - 1)
+	while (++i < n - 1)
 	{
 		j = i - 1;
 		min = i;
@@ -28,5 +28,5 @@ void	selection_sort(int a[], int n)
 				min = j;
 		swap_int(&a[i], &a[min]);
 	}
-	return;
+	return ;
 }

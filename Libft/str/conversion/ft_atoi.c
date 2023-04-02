@@ -25,7 +25,7 @@ static char	*skip_spaces(char *str)
 	return (str);
 }
 
-void print_err()
+void	print_err(void)
 {
 	write(2, "Error\n", 7);
 	exit(3);
@@ -44,10 +44,10 @@ void	sign_handler(const char **str, int *sign)
 	return ;
 }
 
-int ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
-	long res;
-	int sign;
+	long	res;
+	int		sign;
 
 	sign = 1;
 	res = 0;

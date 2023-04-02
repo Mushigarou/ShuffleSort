@@ -15,30 +15,12 @@ void	free_stacks(t_data *data)
 	return ;
 }
 
-void	min_max(t_data *data, t_node *head)
-{
-	t_node *tmp;
-
-	if (!head)
-		return ;
-	tmp = head;
-	MAX_VAL_A = tmp;
-	MIN_VAL_A = tmp;
-	while (tmp->next)
-	{
-		tmp = tmp->next;
-		if (tmp->data > MAX_VAL_A->data)
-			MAX_VAL_A = tmp;
-		if (tmp->data < MIN_VAL_A->data)
-			MIN_VAL_A = tmp;
-	}
-}
-
 void	index_stack(t_node *head, int stk_size)
 {
 	t_node	*tmp;
-	int	*arr;
-	int	i;
+	int		*arr;
+	int		i;
+	int		k;
 
 	i = -1;
 	arr = (int *)malloc(stk_size * sizeof(int));
@@ -50,20 +32,18 @@ void	index_stack(t_node *head, int stk_size)
 	}
 	opt_bubble_sort(arr, stk_size);
 	i = -1;
-	int k = 0;
+	k = 0;
 	tmp = head;
 	while (++i < stk_size)
 	{
 		k = -1;
 		while (++k < stk_size)
-		{
 			if (tmp->data == arr[k])
 				tmp->idx = k;
-		}
 		tmp = tmp->next;
 	}
 	free(arr);
-	return;
+	return ;
 }
 
 void	current_index_instack(t_node *head, int n)
@@ -95,7 +75,7 @@ bool	if_sorted_stop(t_node *head, int n)
 		if (node->next && (node->data < node->next->data))
 			node = node->next;
 		else
-			break;
+			break ;
 	}
 	if (i == 0)
 		return (1);
