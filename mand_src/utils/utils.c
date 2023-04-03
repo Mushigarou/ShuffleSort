@@ -63,7 +63,7 @@ bool	if_sorted_stop(t_node *head, int n)
 
 	i = n;
 	node = head;
-	while (i--)
+	while (i-- > 0)
 	{
 		if (node->next && (node->data < node->next->data))
 			node = node->next;

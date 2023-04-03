@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void	init_data(t_data *data)
+static void	init_data(t_data *data)
 {
 	data->s_a = (t_a *)malloc(sizeof(t_a));
 	data->s_b = (t_b *)malloc(sizeof(t_b));
@@ -8,7 +8,7 @@ void	init_data(t_data *data)
 	ft_bzero(data->s_b, sizeof(t_b));
 }
 
-void	fill_stack_a(t_data *data, char **av, int ac)
+static void	fill_stack_a(t_data *data, char **av, int ac)
 {
 	char	**tmp;
 	int		i;
@@ -33,7 +33,7 @@ void	fill_stack_a(t_data *data, char **av, int ac)
 	data->s_a->botm = last_node(data->s_a->head);
 }
 
-void	find_duplicate_nbr(t_data *data)
+static void	find_duplicate_nbr(t_data *data)
 {
 	t_node	*tmp;
 	t_node	*tmp2;
@@ -58,7 +58,7 @@ void	find_duplicate_nbr(t_data *data)
 	return ;
 }
 
-void	if_sorted(t_data *data)
+static void	if_sorted(t_data *data)
 {
 	t_node	*node;
 	int		i;
@@ -78,7 +78,7 @@ void	if_sorted(t_data *data)
 }
 
 void	parser(t_data *data, int ac, char **av)
-{	
+{
 	init_data(data);
 	fill_stack_a(data, av, ac);
 	if_sorted(data);

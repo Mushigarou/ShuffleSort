@@ -28,7 +28,7 @@ static char	*skip_spaces(char *str)
 void	print_err(void)
 {
 	write(2, "Error\n", 7);
-	exit(3);
+	exit(1);
 }
 
 void	sign_handler(const char **str, int *sign)
