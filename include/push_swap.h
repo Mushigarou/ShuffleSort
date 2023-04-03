@@ -28,8 +28,9 @@ typedef struct stack_b
 
 typedef struct s_data
 {
-	t_a	*s_a;
-	t_b	*s_b;
+	t_a		*s_a;
+	t_b		*s_b;
+	bool	print_stacks;
 }	t_data;
 
 /********************* Parser ********************/

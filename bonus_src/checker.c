@@ -74,6 +74,8 @@ static void	exec_move(t_data *data, t_list *moves)
 	tmp = moves;
 	while (tmp)
 	{
+		if (data->print_stacks == 1)
+			print_stacks(*data);
 		which_move_is(data, tmp->content);
 		tmp = tmp->next;
 	}
