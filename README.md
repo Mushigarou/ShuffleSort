@@ -1,9 +1,9 @@
-# Push_Swap
+# ShuffleSort
 
-Push_Swap is a sorting algorithm project that aims to sort a stack of numbers in ascending order using a specific set of operations. The project consists of two programs: push_swap and checker.
+ShuffleSort is a sorting algorithm project that aims to sort a stack of numbers in ascending order using a specific set of operations. The project consists of two programs: push_swap and checker.
 Rules
 
-## The project follows the following rules:
+## Rules
 Two stacks are used, named a and b.
 - At the beginning:
 	- Stack a contains a random amount of negative and/or positive numbers, which are unique and cannot be duplicated.
@@ -16,7 +16,7 @@ Two stacks are used, named a and b.
 	- pa: Take the first element at the top of stack b and put it at the top of stack a. No effect if stack b is empty.
 	- pb: Take the first element at the top of stack a and put it at the top of stack b. No effect if stack a is empty.
 	- ra: Shift up all elements of stack a by 1. The first element becomes the last one.
-![ra](https://github.com/Mushigarou/push_swap/assets/115739322/01f01932-b8dd-498e-83e9-638466f6921e)
+![ra](https://github.com/Mushigarou/ShuffleSort/assets/115739322/01f01932-b8dd-498e-83e9-638466f6921e)
 	- rb: Shift up all elements of stack b by 1. The first element becomes the last one.
 	- rr: ra and rb at the same time.
 	- rra: Shift down all elements of stack a by 1. The last element becomes the first one.
@@ -29,7 +29,7 @@ Two stacks are used, named a and b.
 
 - The program will display the smallest list of instructions possible to sort the stack a, with the smallest number at the top. Instructions are separated by a newline character (\n).
 
-- The goal is to sort the stack with the lowest possible number of operations. If the program displays a longer list or if the numbers are not sorted properly, the grade will be 0.
+- The goal is to sort the stack with the lowest possible number of operations.
 
 - If no parameters are specified, the program will not display anything and return to the prompt. In case of an error, it will display "Error" followed by a newline character (\n) on the standard error.
 
@@ -63,6 +63,8 @@ $> ./push_swap 2 1 3 6 5 | ./checker 2 1 3 6 5
 OK
 ```
 - The checker program accepts `-v` as a flag, the program will print the content of both stacks after each instruction is executed. It also accepts `-V` flag, which will print the stack and the instruction executed.
+
+## Contribution
 
 Contributions to this project are welcome! If you find any issues or have improvements to suggest, please feel free to submit a pull request.
 ## License
