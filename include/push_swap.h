@@ -31,6 +31,7 @@ typedef struct s_data
 	t_a		*s_a;
 	t_b		*s_b;
 	bool	print_stacks;
+	bool	print_stacks_moves;
 }	t_data;
 
 /********************* Parser ********************/

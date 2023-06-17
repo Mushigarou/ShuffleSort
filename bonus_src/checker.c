@@ -37,7 +37,7 @@ static void	which_move_is_2(t_data *data, char *move)
 		ftb_rra(data);
 	else
 	{
-		write(2, "Error\n", 22);
+		write(2, "Error\n", 7);
 		exit(1);
 	}
 	return ;
@@ -74,9 +74,14 @@ static void	exec_move(t_data *data, t_list *moves)
 	tmp = moves;
 	while (tmp)
 	{
+		which_move_is(data, tmp->content);
 		if (data->print_stacks == 1)
 			print_stacks(*data);
-		which_move_is(data, tmp->content);
+		if (data->print_stacks_moves == 1)
+		{
+			print_stacks(*data);
+			ft_printf("\e[1;93m↑ %s \e[0m ", tmp->content);
+		}
 		tmp = tmp->next;
 	}
 	return ;
@@ -91,6 +96,8 @@ int	main(int ac, char **av)
 		return (1);
 	parser_bonus(&data, ac, av);
 	read_stdin(&moves);
+	if (data.print_stacks == 1 || data.print_stacks_moves == 1)
+		print_stacks(data);
 	if (moves)
 		exec_move(&data, moves);
 	ft_lstclear(&moves, free);
